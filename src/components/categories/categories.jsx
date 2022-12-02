@@ -1,5 +1,6 @@
-import CategoryItem from "../category-item/category-item.jsx"
-import "../category-item/category-item.scss"
+import CategoryItem from "../category-item/category-item.jsx";
+import "../category-item/category-item.scss";
+import { Outlet } from "react-router-dom";
 
 const Categories = () => {
   const categories = [
@@ -31,10 +32,13 @@ const Categories = () => {
   ];
 
   return (
-    <div className="categories-container">
-      {categories.map((category) => {
-        return <CategoryItem key={category.id} category={category} />;
-      })}
+    <div>
+        <Outlet />
+      <div className="categories-container">
+        {categories.map((category) => {
+          return <CategoryItem key={category.id} category={category} />;
+        })}
+      </div>
     </div>
   );
 };
