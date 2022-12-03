@@ -1,17 +1,18 @@
+import "./sign-up.scss";
 import { useState } from "react";
 import {
-  createAuthUserWithEmailAndPassword,
+  signupWithEmail,
   createUserDocumentFromAuth,
-} from "../../utils/firebase/firbase.utils";
-
-const defaultFormFields = {
-  displayName: "",
-  email: "",
-  password: "",
-  confirmPassword: "",
-};
+} from "../../../utils/firebase/firbase.utils";
 
 const SignUpForm = () => {
+  const defaultFormFields = {
+    displayName: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+  };
+
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
   // =====reset formfield after completing signup===========//
@@ -27,7 +28,7 @@ const SignUpForm = () => {
     console.log(newName, value);
     setFormFields({ ...formFields, [newName]: value });
   };
-  console.log(formFields);
+  // console.log(formFields);
   // =========== checking conditions of input values =======//
 
   const submitHandler = async (event) => {
@@ -37,10 +38,7 @@ const SignUpForm = () => {
       return;
     }
     try {
-      const response = await createAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
+      const response = await signupWithEmail(email, password);
       // console.log(response);
       await createUserDocumentFromAuth(response.user, { displayName });
       setFormFields(defaultFormFields);
@@ -54,9 +52,9 @@ const SignUpForm = () => {
 
   // ======== return block============//
   return (
-    <div className="sign-up">
-      <h1>sign up with your email and password</h1>
-      <form onSubmit={submitHandler}>
+    
+      <form className="sign-up-form" onSubmit={submitHandler}>
+        <h4>sign up with your email and password</h4>
         <label>Display Name </label>
         <input
           type="text"
@@ -90,9 +88,11 @@ const SignUpForm = () => {
           value={confirmPassword}
           onChange={handler}
         />
-        <button type="submit">sign up</button>
+        <button className="btn btn-signup" type="submit">
+          sign up
+        </button>
       </form>
-    </div>
+    
   );
 };
 

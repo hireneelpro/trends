@@ -1,8 +1,8 @@
 // import "./components/category-item/category-item.scss"
 import { Routes, Route } from "react-router-dom";
+import MainSignPage from "./components/authentication/mainsignpage/main-sign-page";
 import Categories from "./components/categories/categories";
 import Navigation from "./components/routes/navigation/navigation.component";
-import SignIn from "./components/sign-in/sign-component.jsx";
 
 
 
@@ -16,7 +16,7 @@ const App = () => {
       <Route path="/" element={<Navigation />}>
         <Route index element={<Categories />} />
         <Route path="shop" element={<Shop />} />
-        <Route path="sign-in" element={<SignIn />} />
+        <Route path="mainsignpage" element={<MainSignPage />} />
       </Route>
     </Routes>
   );

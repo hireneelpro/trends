@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -21,49 +22,52 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const firebaseApp = initializeApp(firebaseConfig);
+//=============  initialise fire store===============//
+
+export const db = getFirestore(); // accessing stored data in firestore
+
+export const auth = getAuth();
+
+// ==============sign in with google ==============//
 
 const provider = new GoogleAuthProvider();
+export const signInWithGoogle = () => signInWithPopup(auth, provider);
 
 provider.setCustomParameters({
   prompt: "select_account",
 });
 
-export const auth = getAuth();
-export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
-//=============  initialise fire store===============//
+// ===========sign-up with email and password method ==================//
+export const signupWithEmail = async (email, password) => {
+  if (!email || !password) return;
 
-export const db = getFirestore(); // accessing stored data in firestore
+  return await createUserWithEmailAndPassword(auth, email, password);
+};
+// ============ sign-in with email and password===============//
+export const signInWithEmail = async (email, password) => {
+  if (!email || !password) return;
+  return await signInWithEmailAndPassword(auth, email, password);
+};
+// ========== firestore  storing user data complete=================//
+
 export const createUserDocumentFromAuth = async (userAuth, extrainfo = {}) => {
   const userDocRef = doc(db, "users", userAuth.uid);
-  console.log(userAuth);
-  console.log(userDocRef);
 
   // Fetching the document
   const userSnapshot = await getDoc(userDocRef);
-  // console.log(userSnapshot.data());
-  // console.log(userSnapshot.exists());
   if (!userSnapshot.exists()) {
     const { displayName, email } = userAuth;
     const createAt = new Date();
-    // console.log(displayName, email, createAt);
     try {
       await setDoc(userDocRef, {
         displayName,
         email,
         createAt,
-        ...extrainfo
+        ...extrainfo,
       });
     } catch (error) {
       console.log("error creating the user", error.message);
     }
   }
   return userDocRef;
-};
-// ========== firestore  storing user data complete=================//
-
-// ===========sign-in with email and password method ==================//
-export const createAuthUserWithEmailAndPassword = async (email, password) => {
-  if (!email || !password) return;
-
-  return await createUserWithEmailAndPassword(auth, email, password);
 };
