@@ -1,6 +1,6 @@
 import "./sign-in.scss";
-import { useState } from "react";
-
+import { useState, useContext } from "react";
+// import { UserContext } from "../../../context/user.context";
 import {
   createUserDocumentFromAuth,
   signInWithEmail,
@@ -8,11 +8,16 @@ import {
 } from "../../../utils/firebase/firbase.utils";
 
 const SignInForm = () => {
+  // ========context========
+  // const { setCurrentUser } = useContext(UserContext);
+
+  //=========================
   // ======== sign-in with google =======
   const logGoogleUser = async (e) => {
     e.preventDefault();
     const data = await signInWithGoogle();
     createUserDocumentFromAuth(data.user);
+    // setCurrentUser(data.user);
   };
   // =================sign in with email======//
   const defaultFormFields = {
@@ -28,14 +33,16 @@ const SignInForm = () => {
     console.log(newName, value);
     setFormFields({ ...formFields, [newName]: value });
   };
-  console.log(formFields);
+  // console.log(formFields);
   // email signin//
   const emailSignin = async (e) => {
     e.preventDefault();
 
     try {
       const response = await signInWithEmail(email, password);
-      console.log(response);
+      // console.log(response);
+      // setCurrentUser(response.user);
+
     } catch (error) {
       console.log(error);
       if (error.code === "auth/user-not-found") {

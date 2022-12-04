@@ -6,6 +6,8 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
@@ -48,6 +50,15 @@ export const signInWithEmail = async (email, password) => {
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password);
 };
+// ========== sign out ===============================//
+export const signOutUser = () => signOut(auth);
+
+//=========== onAuthStateChanged===================//
+
+export const onAuthStateChangedListener = (callback) =>
+  onAuthStateChanged(auth, callback);
+//  onAuthStateChanged method takes two argument one auth and other is callback function which we can define.. so when function runs it keep listening auth object and when state of auth change it runs callback function .. so when signin this function will run,, if signout this function will run.
+
 // ========== firestore  storing user data complete=================//
 
 export const createUserDocumentFromAuth = async (userAuth, extrainfo = {}) => {
