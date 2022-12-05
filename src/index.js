@@ -5,14 +5,20 @@ import "./index.css";
 import App from "./App";
 import { UserProvider } from "./context/user.context.jsx";
 import reportWebVitals from "./reportWebVitals";
+import { ProductsProvider } from "./context/products.context";
+import { ToggleCartProvider } from "./context/dropdown-cart-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <UserProvider>
-        <App />
-      </UserProvider>
+      <ToggleCartProvider>
+        <UserProvider>
+          <ProductsProvider>
+            <App />
+          </ProductsProvider>
+        </UserProvider>
+      </ToggleCartProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

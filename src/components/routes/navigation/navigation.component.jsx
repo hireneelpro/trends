@@ -6,6 +6,7 @@ import { signOut } from "firebase/auth";
 import { UserContext } from "../../../context/user.context";
 import { signOutUser } from "../../../utils/firebase/firbase.utils";
 // import { signOutUser } from "../../../utils/firebase/firbase.utils";
+import CartIcon from "../../cart-icon/cart-icon";
 
 const Navigation = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
@@ -40,6 +41,9 @@ const Navigation = () => {
             </Link>
           )}
         </div>
+          <Link className="nav-link" to="/cart">
+            <CartIcon/>
+          </Link>
       </div>
 
       <Outlet />
