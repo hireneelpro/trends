@@ -10,6 +10,7 @@
   top: 90px;
   right: 40px;
   z-index: 5;
+  border: solid;
 
   .empty-message {
     font-size: 18px;
@@ -26,7 +27,4 @@
   button {
     margin-top: auto;
   }
-}
-.toggle-cart{
-    display: none;
 }

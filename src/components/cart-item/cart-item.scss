@@ -1,0 +1,20 @@
+.item {
+  height: 3rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1rem;
+
+  & img {
+    width: 3rem;
+    height: 3rem;
+    object-fit: cover;
+  }
+  & div {
+    & h6,
+    span {
+      font-size: 0.8rem;
+      margin: 0;
+    }
+  }
+}

@@ -7,15 +7,17 @@ import { UserContext } from "../../../context/user.context";
 import { signOutUser } from "../../../utils/firebase/firbase.utils";
 // import { signOutUser } from "../../../utils/firebase/firbase.utils";
 import CartIcon from "../../cart-icon/cart-icon";
+import CartDropDown from "../../cart-dropdown/cart-dropdown";
+import { CartContext } from "../../../context/cart-context";
 
 const Navigation = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
+  const { currentUser } = useContext(UserContext);
   // console.log(currentUser);
   // ===
   // const signOutHandler = async () => {
   //   await signOutUser()
   //   setCurrentUser(null)
-  //   // when system signout  , it sends response as undefined , so it gets some response and then after only setCurrentUser(null) will be run
+  const { toggleCart } = useContext(CartContext);
 
   // };
   // ====
@@ -40,10 +42,13 @@ const Navigation = () => {
               sign-in
             </Link>
           )}
+          <CartIcon />
         </div>
-          <Link className="nav-link" to="/cart">
-            <CartIcon/>
-          </Link>
+
+        {toggleCart && <CartDropDown />}
+
+        {/* cartdropdown will be rendered only when both are true
+                 cartdropdown is always true */}
       </div>
 
       <Outlet />

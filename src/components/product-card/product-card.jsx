@@ -1,0 +1,41 @@
+import "./product-card.scss";
+import { CartContext } from "../../context/cart-context";
+import { useContext } from "react";
+
+const ProductCard = ({ product }) => {
+  const newProduct = { ...product, quantity: 1 };
+  const { name, price, imageUrl, id } = newProduct;
+
+  const { cartItems, setCartItems } = useContext(CartContext);
+  // ============================//
+  let x = false;
+  const addToCart = () => {
+    cartItems.forEach((item) => {
+      if (item.id === id) {
+        item.quantity++;
+        console.log(item.quantity);
+        x = true;
+      }
+    });
+    if (x === false) {
+      setCartItems([...cartItems, newProduct]);
+    } else {
+      setCartItems([...cartItems]);
+    }
+  };
+
+  return (
+    <div className="product-card-container">
+      <img src={imageUrl} alt={`${name}`} />
+      <div className="footer">
+        <span className="name">{name}</span>
+        <span className="price">{price}</span>
+      </div>
+      <button onClick={addToCart} className="btn">
+        Add to Cart{" "}
+      </button>
+    </div>
+  );
+};
+
+export default ProductCard;

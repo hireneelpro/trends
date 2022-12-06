@@ -4,7 +4,7 @@ import MainSignPage from "./components/authentication/mainsignpage/main-sign-pag
 import Categories from "./components/categories/categories";
 import Navigation from "./components/routes/navigation/navigation.component";
 import Shop from "../src/components/routes/shop/shop.jsx";
-import CartDropDown from "./components/cart-dropdown/cart-dropdown";
+// import CartDropDown from "./components/cart-dropdown/cart-dropdown";
 
 // const ShoppingCart = () => {
 //   return <div>i am shopping cart </div>;
@@ -17,7 +17,7 @@ const App = () => {
         <Route index element={<Categories />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/mainsignpage" element={<MainSignPage />} />
-        <Route path="/cart" element={<CartDropDown/>} />
+        {/* <Route path="/cart" element={<CartDropDown/>} /> */}
       </Route>
     </Routes>
   );
