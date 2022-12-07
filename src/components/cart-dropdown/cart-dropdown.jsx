@@ -15,8 +15,11 @@ const CartDropDown = () => {
         {cartItems.map((each) =>( < CartItem item={each} key={each.id} />) 
         )}
       </div>
-      <Link to={'/checkout'}>
-        <button className="btn">checkout</button>  </Link>
+      <button className="btn">
+       <Link to={'/checkout'}>
+           checkout
+          </Link>
+      </button>
     </div>
   );
 };

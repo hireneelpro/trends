@@ -12,7 +12,7 @@ const CheckOut = () => {
       <div className="checkout-headings">{<CheckOutHeading />} </div>
       <div className="chk-items-container">
         {cartItems.map((each) => (
-          <CheckOutItem item={each} key="each.id" />
+          <CheckOutItem item={each} key={each.id} />
         ))}
       </div>
     </div>

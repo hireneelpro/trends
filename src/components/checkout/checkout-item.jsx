@@ -1,4 +1,4 @@
-import "./checkout-item.scss"
+import "./checkout-item.scss";
 
 const CheckOutItem = ({ item }) => {
   const { name, price, id, quantity, imageUrl } = item;
@@ -15,7 +15,7 @@ const CheckOutItem = ({ item }) => {
       </div>
       <span>{price}</span>
       <span>
-        <i class="fas fa-times remove"></i>
+        <i className="fas fa-times remove"></i>
       </span>
     </div>
   );
