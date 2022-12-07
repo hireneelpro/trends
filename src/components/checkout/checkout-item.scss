@@ -1,0 +1,20 @@
+.checkout-item {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 1rem 0;
+  place-items: center;
+
+  & img {
+    display: block;
+    width: 4rem;
+  }
+  & h5 {
+    margin: 0;
+  }
+  & div {
+    .quantity {
+      padding: 0 0.4rem;
+    }
+  }
+}

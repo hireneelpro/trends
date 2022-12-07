@@ -1,0 +1,11 @@
+.checkout-headings{
+   
+    border: 1px solid red;
+    font-size: 0.8rem;
+    font-weight: 700;
+
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    place-items: center;
+    
+}
