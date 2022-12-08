@@ -3,17 +3,25 @@ import { useContext } from "react";
 import { CartContext } from "../../context/cart-context";
 import CheckOutItem from "./checkout-item";
 import CheckOutHeading from "./checkout-heading";
+import CheckOutFooter from "./checkout-footer";
 
 const CheckOut = () => {
-  const { cartItems, setCartItems } = useContext(CartContext);
+  const { cartItems, setCartItems, toggleCart, setToggleCart } =
+    useContext(CartContext);
+  setToggleCart(false);
 
   return (
     <div className="checkout-page">
       <div className="checkout-headings">{<CheckOutHeading />} </div>
+      {/* =========== */}
       <div className="chk-items-container">
         {cartItems.map((each) => (
           <CheckOutItem item={each} key={each.id} />
         ))}
+      </div>
+      {/* =========== */}
+      <div className="checkout-footer">
+        <CheckOutFooter/>
       </div>
     </div>
   );

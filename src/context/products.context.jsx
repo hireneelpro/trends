@@ -1,14 +1,26 @@
 import { useState, createContext } from "react";
-import PRODUCTS from "../../src/shop-data.json"
-// console.log(PRODUCTS);
+import { getCategoriesAndDocuments } from "../utils/firebase/firbase.utils";
+import { useEffect } from "react";
+import SHOP_DATA from "../shop-data";
 
 export const ProductsContext = createContext({
-    products: []
-
-}
-)
+  products: [],
+});
 export const ProductsProvider = ({ children }) => {
-    const[products, setProducts]=useState(PRODUCTS)
-    const value = {products}
-    return (<ProductsContext.Provider value={value}>{children }</ProductsContext.Provider>)
-}
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        // we have to wrap getCategoriesAndDocuments in a function to get rid of promise we get with it//
+        const getCategoryMap = async () => {
+            const categoryMap = await getCategoriesAndDocuments()
+            console.log(categoryMap);
+        }
+        getCategoryMap()
+    },[])
+  
+  const value = { products };
+  return (
+    <ProductsContext.Provider value={value}>
+      {children}
+    </ProductsContext.Provider>
+  );
+};

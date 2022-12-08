@@ -1,8 +1,12 @@
 .checkout-headings{
    
-    border: 1px solid red;
+    background-color: rgb(223, 145, 223);
+    color: white;
     font-size: 0.8rem;
     font-weight: 700;
+    width: 100%;
+    position: sticky;
+    top: 0;
 
     display: grid;
     grid-template-columns: repeat(5,1fr);

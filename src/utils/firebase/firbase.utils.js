@@ -10,7 +10,17 @@ import {
   signOut,
 } from "firebase/auth";
 
-import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  writeBatch,
+  query,
+  getdocs,
+  getDocs,
+} from "firebase/firestore";
 
 // Your web app's Firebase configuration// downlo
 const firebaseConfig = {
@@ -27,7 +37,38 @@ const firebaseApp = initializeApp(firebaseConfig);
 //=============  initialise fire store===============//
 
 export const db = getFirestore(); // accessing stored data in firestore
+// ========== storing data into firestore ==================//
 
+export const addCollectionAndDocuments = async (
+  collectionKey,
+  objectsToAdd
+) => {
+  const collectionRef = collection(db, collectionKey);
+  const batch = writeBatch(db);
+  objectsToAdd.forEach((object) => {
+    const docRef = doc(collectionRef, object.title.toLowerCase());
+    batch.set(docRef, object);
+  });
+  await batch.commit();
+  console.log("done");
+};
+
+// ========== end of storing data in firestore ===========//
+// ========== fetching data from firebase ===============//
+export const getCategoriesAndDocuments = async () => {
+  const collectionRef = collection(db, "categories");
+  const q = query(collectionRef);
+  const querySnapshot = await getDocs(q);
+  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+    const { title, items } = docSnapshot.data();
+    acc[title.toLowerCase()] = items;
+    return acc;
+  }, {});
+
+  return categoryMap;
+};
+
+//=============end of fetching data from firestore=======//
 export const auth = getAuth();
 
 // ==============sign in with google ==============//
