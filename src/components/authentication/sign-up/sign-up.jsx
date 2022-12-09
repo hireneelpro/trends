@@ -5,6 +5,7 @@ import {
   createUserDocumentFromAuth,
 } from "../../../utils/firebase/firbase.utils";
 // import { UserContext } from "../../../context/user.context";
+import Button from "../../button/button";
 
 const SignUpForm = () => {
   const defaultFormFields = {
@@ -91,9 +92,9 @@ const SignUpForm = () => {
           value={confirmPassword}
           onChange={handler}
         />
-        <button className="btn btn-signup" type="submit">
-          sign up
-        </button>
+      <Button buttonType='inverted' type='submit' >
+        SignUp
+        </Button>
       </form>
     
   );

@@ -1,4 +1,3 @@
-import "./sign-in.scss";
 import { useState, useContext } from "react";
 // import { UserContext } from "../../../context/user.context";
 import {
@@ -6,6 +5,8 @@ import {
   signInWithEmail,
   signInWithGoogle,
 } from "../../../utils/firebase/firbase.utils";
+import Button from "../../button/button";
+import { SignInStyles,ButtonContainer } from "./sign-in.styles";
 
 const SignInForm = () => {
   // ========context========
@@ -42,7 +43,6 @@ const SignInForm = () => {
       const response = await signInWithEmail(email, password);
       // console.log(response);
       // setCurrentUser(response.user);
-
     } catch (error) {
       console.log(error);
       if (error.code === "auth/user-not-found") {
@@ -60,7 +60,7 @@ const SignInForm = () => {
 
   // ===========
   return (
-    <form className="sign-in">
+    <SignInStyles>
       <h4>Having email and password</h4>
       <h5> Sign In Here</h5>
       <label>email</label>
@@ -79,15 +79,13 @@ const SignInForm = () => {
         value={password}
         onChange={handler}
       />
-      <div className="btn-container">
-        <button className="btn btn-signin" onClick={emailSignin}>
-          sign-in
-        </button>
-        <button className="btn btn-google" onClick={logGoogleUser}>
+      <ButtonContainer>
+        <Button onClick={emailSignin}>sign-in</Button>
+        <Button buttonType="google" onClick={logGoogleUser}>
           google
-        </button>
-      </div>
-    </form>
+        </Button>
+      </ButtonContainer>
+    </SignInStyles>
   );
 };
 export default SignInForm;

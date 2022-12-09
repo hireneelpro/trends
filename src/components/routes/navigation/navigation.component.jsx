@@ -1,7 +1,7 @@
 import { Outlet, Link } from "react-router-dom";
 import { Fragment, useContext } from "react";
 import { ReactComponent as CrwnLogo } from "./crown.svg";
-import "./navigation.styles.scss";
+// import "./navigation.styles.jsx";
 import { signOut } from "firebase/auth";
 import { UserContext } from "../../../context/user.context";
 import { signOutUser } from "../../../utils/firebase/firbase.utils";
@@ -9,6 +9,12 @@ import { signOutUser } from "../../../utils/firebase/firbase.utils";
 import CartIcon from "../../cart-icon/cart-icon";
 import CartDropDown from "../../cart-dropdown/cart-dropdown";
 import { CartContext } from "../../../context/cart-context";
+import {
+  NavigationContainer,
+  LogoContainer,
+  NavLinksContainer,
+  NavLink,
+} from "./navigation.styles";
 
 const Navigation = () => {
   const { currentUser } = useContext(UserContext);
@@ -23,33 +29,29 @@ const Navigation = () => {
   // ====
   return (
     <Fragment>
-      <div className="navigation">
-        <Link className="logo-container" to="/">
+      <NavigationContainer>
+        <LogoContainer to="/">
           <div>
             <CrwnLogo />
           </div>
-        </Link>
-        <div className="nav-links-container">
-          <Link className="nav-link" to="/shop">
-            shop
-          </Link>
+        </LogoContainer>
+        <NavLinksContainer>
+          <NavLink to="/shop">shop</NavLink>
           {currentUser ? (
-            <span className="nav-link" onClick={signOutUser}>
+            <NavLink as="span" onClick={signOutUser}>
               Sign Out
-            </span>
+            </NavLink>
           ) : (
-            <Link className="nav-link" to="/mainsignpage">
-              sign-in
-            </Link>
+            <NavLink to="/mainsignpage">sign-in</NavLink>
           )}
           <CartIcon />
-        </div>
+        </NavLinksContainer>
 
         {toggleCart && <CartDropDown />}
 
         {/* cartdropdown will be rendered only when both are true
                  cartdropdown is always true */}
-      </div>
+      </NavigationContainer>
 
       <Outlet />
     </Fragment>

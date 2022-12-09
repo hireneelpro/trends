@@ -1,26 +1,27 @@
-import "./cart-dropdown.scss";
 import { useContext } from "react";
 import { CartContext } from "../../context/cart-context";
 import CartItem from "../cart-item/cart-item";
 import CheckOut from "../checkout/checkout-page";
 import { Link } from "react-router-dom";
-
+import { CartDropdownContainer, CartItemsStyles } from "./cart-dropdown.styles";
+import Button from "../button/button.jsx";
 const CartDropDown = () => {
-  const { cartItems} = useContext(CartContext);
+  const { cartItems } = useContext(CartContext);
   // console.log(cartItems);
-  
+
   return (
-    <div className="cart-dropdown-container">
-      <div className="cart-items">
-        {cartItems.map((each) =>( < CartItem item={each} key={each.id} />) 
+    <CartDropdownContainer>
+      <CartItemsStyles>
+        {cartItems.length ? (
+          cartItems.map((each) => <CartItem item={each} key={each.id} />)
+        ) : (
+          <span>your cart is empty</span>
         )}
-      </div>
-      <button className="btn">
-       <Link to={'/checkout'}>
-           checkout
-          </Link>
-      </button>
-    </div>
+      </CartItemsStyles>
+      <Button buttonType="google">
+        <Link to={"/checkout"}>checkout</Link>
+      </Button>
+    </CartDropdownContainer>
   );
 };
 export default CartDropDown;
