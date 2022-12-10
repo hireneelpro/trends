@@ -1,9 +1,12 @@
 // import "./category-item.scss";
+import {Link } from "react-router-dom";
 
 const CategoryItem = ({ category }) => {
   const { title, imageUrl } = category;
+  
+
   return (
-    <div className="category-container">
+    <Link to= {`/shop/${title}`} className="category-container">
       <div
         className="background-image"
         style={{
@@ -14,8 +17,20 @@ const CategoryItem = ({ category }) => {
         <h2>{title}</h2>
         <p>shop now</p>
       </div>
-    </div>
+    </Link>
   );
 };
 
 export default CategoryItem;
+{/* <div onClick={showCategoryItems} className="category-container">
+  <div
+    className="background-image"
+    style={{
+      backgroundImage: `url(${imageUrl})`,
+    }}
+  />
+  <div className="category-body-container">
+    <h2>{title}</h2>
+    <p>shop now</p>
+  </div>
+</div>; */}
