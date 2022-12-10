@@ -7,18 +7,18 @@ export const CategoriesContext = createContext({
   categories: {},
 });
 export const CategoriesProvider = ({ children }) => {
-    const [categories, setCategories] = useState({});
-    useEffect(() => {
-        // we have to wrap getCategoriesAndDocuments in a function to get rid of promise we get with it//
-        const getCategoryMap = async () => {
-            const categoryMap = await getCategoriesAndDocuments()
-          // console.log(categoryMap);
-          setCategories(categoryMap)
-        }
-        getCategoryMap()
-    },[])
-  
-  const value = {categories,setCategories  };
+  const [categories, setCategories] = useState({});
+  useEffect(() => {
+    // we have to wrap getCategoriesAndDocuments in a function to get rid of promise we get with it//
+    const getCategoryMap = async () => {
+      const categoryMap = await getCategoriesAndDocuments();
+      // console.log(categoryMap);
+      setCategories(categoryMap);
+    };
+    getCategoryMap();
+  }, []);
+
+  const value = { categories, setCategories };
   return (
     <CategoriesContext.Provider value={value}>
       {children}

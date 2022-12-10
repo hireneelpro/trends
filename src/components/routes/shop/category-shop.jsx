@@ -8,9 +8,11 @@ const CatetoryShop = () => {
 
   return (
     <div className="products-container">
-      {categories[category].map((product) => (
-        <ProductCard key={product.id} product={product} />
-      ))}
+      {categories[category] ?
+        (categories[category].map((product) => (
+          <ProductCard key={product.id} product={product} />)
+        )): <h1> No items to show</h1>
+      }
     </div>
   );
 };
