@@ -4,11 +4,14 @@ import { CartContext } from "../../context/cart-context";
 import CheckOutItem from "./checkout-item";
 import CheckOutHeading from "./checkout-heading";
 import CheckOutFooter from "./checkout-footer";
+import { useEffect } from "react";
 
 const CheckOut = () => {
-  const { cartItems, setCartItems, toggleCart, setToggleCart } =
-    useContext(CartContext);
-  setToggleCart(false);
+  const { cartItems, setToggleCart } = useContext(CartContext);
+
+  useEffect(() => {
+    setToggleCart(false);
+  }, []);
 
   return (
     <div className="checkout-page">
@@ -21,7 +24,7 @@ const CheckOut = () => {
       </div>
       {/* =========== */}
       <div className="checkout-footer">
-        <CheckOutFooter/>
+        <CheckOutFooter />
       </div>
     </div>
   );

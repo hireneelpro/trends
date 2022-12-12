@@ -6,7 +6,7 @@ import "./main-shop.scss";
 
 const MainShop = () => {
   const { categories } = useContext(CategoriesContext);
-  console.log(categories);
+  // console.log(categories);
   // console.log(Object.keys(categories));
   
 

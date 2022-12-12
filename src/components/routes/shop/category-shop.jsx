@@ -1,4 +1,4 @@
-import { Outlet, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { CategoriesContext } from "../../../context/categories-context";
 import ProductCard from "../../product-card/product-card";

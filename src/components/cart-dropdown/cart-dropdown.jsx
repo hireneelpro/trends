@@ -1,13 +1,12 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/cart-context";
 import CartItem from "../cart-item/cart-item";
-import CheckOut from "../checkout/checkout-page";
 import { Link } from "react-router-dom";
 import { CartDropdownContainer, CartItemsStyles } from "./cart-dropdown.styles";
 import Button from "../button/button.jsx";
+
 const CartDropDown = () => {
   const { cartItems } = useContext(CartContext);
-  // console.log(cartItems);
 
   return (
     <CartDropdownContainer>
