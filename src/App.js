@@ -1,23 +1,25 @@
-import { useEffect } from "react";
+import { useEffect, createContext } from "react";
 import { Routes, Route } from "react-router-dom";
 import MainSignPage from "./components/authentication/mainsignpage/main-sign-page";
 import Categories from "./components/categories/categories";
 import Navigation from "./components/routes/navigation/navigation.component";
 import Shop from "../src/components/routes/shop/shop.jsx";
 import CheckOut from "./components/checkout/checkout-page";
-import { onAuthStateChangedListener,createUserDocumentFromAuth } from "./utils/firebase/firbase.utils";
-
+import {
+  onAuthStateChangedListener,
+  createUserDocumentFromAuth,
+} from "./utils/firebase/firbase.utils";
+import { setCurrentUser } from "./store/user/user.action";
+import { useDispatch } from "react-redux";
 const App = () => {
- useEffect(() => {
-   const unSubscribe = onAuthStateChangedListener((user) => {
-     // console.log(user);
-     setCurrentUser(user);
-     
-   });
-   return unSubscribe;
- }, []);
-
-
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const unSubscribe = onAuthStateChangedListener((user) => {
+      // console.log(user);
+      dispatch(setCurrentUser(user));
+    });
+    return unSubscribe;
+  }, [dispatch]);
 
   return (
     <Routes>
