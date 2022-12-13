@@ -59,13 +59,17 @@ export const getCategoriesAndDocuments = async () => {
   const collectionRef = collection(db, "categories");
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q);
-  const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
-    const { title, items } = docSnapshot.data();
-    acc[title.toLowerCase()] = items;
-    return acc;
-  }, {});
+  // console.log(querySnapshot);
+  return querySnapshot.docs.map((each)=>(each.data()))
+  //   .reduce((acc, each) => {
+  //     const { title, items } = each.data();
+  //     console.log(title,items);
+  //     acc[title.toLowerCase()] = items;
+  //     console.log(acc);
+  //   return acc;
+  // }, {});
 
-  return categoryMap;
+  // return categoryMap;
 };
 
 //=============end of fetching data from firestore=======//
