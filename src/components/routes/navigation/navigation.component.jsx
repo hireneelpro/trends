@@ -17,9 +17,11 @@ import {
   NavLink,
 } from "./navigation.styles";
 import { selectUser } from "../../../store/user/user.selector";
+import { selectCartToggle } from "../../../store/cart/cart.selector";
 
 const Navigation = () => {
   const currentUser = useSelector(selectUser);
+  const toggleCart = useSelector(selectCartToggle)
 
   // const { currentUser } = useContext(UserContext);S
   // console.log(currentUser);
@@ -27,7 +29,7 @@ const Navigation = () => {
   // const signOutHandler = async () => {
   //   await signOutUser()
   //   setCurrentUser(null)
-  const { toggleCart } = useContext(CartContext);
+  // const { toggleCart } = useContext(CartContext);
 
   // };
   // ====

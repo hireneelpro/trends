@@ -8,7 +8,7 @@ import { selectCategories } from "../../../store/categories/categories.selector"
 
 const MainShop = () => {
   const categories = useSelector(selectCategories);
-  console.log(categories);
+  // console.log(categories);
 
   return (
     <Fragment>

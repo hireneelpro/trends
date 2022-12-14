@@ -7,10 +7,10 @@ import ProductCard from "../../product-card/product-card";
 const CatetoryShop = () => {
   // const { categories } = useContext(CategoriesContext);
   const categories = useSelector(selectCategories);
-  console.log(categories);
+  // console.log(categories);
 
   const { category } = useParams();
-  console.log(category);
+  // console.log(category);
 
   return (
     <div className="products-container">
