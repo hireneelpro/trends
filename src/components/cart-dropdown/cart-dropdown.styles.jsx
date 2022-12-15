@@ -17,7 +17,7 @@ export const CartDropdownContainer = styled.div`
   border: solid;
   
   ${GoogleSignInButton} {
-    background-color: red;
+    background-color: #f5afe9;
     margin-top: auto;
   }
   span {

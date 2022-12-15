@@ -10,24 +10,23 @@ import {
   createUserDocumentFromAuth,
 } from "./utils/firebase/firbase.utils";
 import { setCurrentUser } from "./store/user/user.action";
-import { useDispatch } from "react-redux";
-import { setCategoriesArray } from "./store/categories/categories.action";
-import { getCategoriesAndDocuments } from "./utils/firebase/firbase.utils";
+import { useDispatch, useSelector } from "react-redux";
+// import { setCategoriesArray } from "./store/categories/categories.action";
+// import { getCategoriesAndDocuments } from "./utils/firebase/firbase.utils";
+import { fetchCategoriesAsync } from "./store/categories/categories.action";
+import Spinner from "./components/spinner/spinner";
+import { categoriesIsLoading } from "./store/categories/categories.selector";
+
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const getCategories = async () => {
-      const value = await getCategoriesAndDocuments();
-      // console.log(value);
-      dispatch(setCategoriesArray(value));
-    };
-    getCategories();
-
+    dispatch(fetchCategoriesAsync())
   }, []);
 
-  // =======================//
+  const isLoading = useSelector(categoriesIsLoading)
 
+  //  =========================//
   useEffect(() => {
     const unSubscribe = onAuthStateChangedListener((user) => {
       // console.log(user);
@@ -35,16 +34,22 @@ const App = () => {
     });
     return unSubscribe;
   }, [dispatch]);
+
   // ==========================//
   return (
-    <Routes>
-      <Route path="/" element={<Navigation />}>
-        <Route index element={<Categories />} />
-        <Route path="shop/*" element={<Shop />} />
-        <Route path="mainsignpage" element={<MainSignPage />} />
-        <Route path="/checkout" element={<CheckOut />} />
-      </Route>
-    </Routes>
+    <>
+      {isLoading ? <Spinner /> : (
+        <Routes>
+          <Route path="/" element={<Navigation />}>
+            <Route index element={<Categories />} />
+            <Route path="shop/*" element={<Shop />} />
+            <Route path="mainsignpage" element={<MainSignPage />} />
+            <Route path="/checkout" element={<CheckOut />} />
+          </Route>
+        </Routes>
+      )
+      }
+    </>
   );
 };
 

@@ -5,14 +5,18 @@ import ProductCard from "../../product-card/product-card";
 import "./main-shop.scss";
 import { useSelector } from "react-redux";
 import { selectCategories } from "../../../store/categories/categories.selector";
+import Spinner from "../../spinner/spinner";
+import { categoriesIsLoading } from "../../../store/categories/categories.selector";
 
 const MainShop = () => {
   const categories = useSelector(selectCategories);
-  // console.log(categories);
-
+  const isLoading = useSelector(categoriesIsLoading);
   return (
     <Fragment>
-      {categories &&
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        categories &&
         Object.keys(categories).map((title) => (
           <Fragment key={title}>
             <h2>
@@ -26,7 +30,8 @@ const MainShop = () => {
               ))}
             </div>
           </Fragment>
-        ))}
+        ))
+      )}
     </Fragment>
   );
 };

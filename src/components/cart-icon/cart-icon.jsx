@@ -11,7 +11,7 @@ const CartIcon = () => {
   // const toggle = () => setToggleCart(!toggleCart);
   const dispatch = useDispatch();
   const cartToggleValue = useSelector(selectCartToggle);
-  const cartCountValue = useSelector(selectCartCount);
+  const count = useSelector(selectCartCount)
   const toggle = () => {
     dispatch(setCartToggle(!cartToggleValue));
   };
@@ -19,7 +19,7 @@ const CartIcon = () => {
   return (
     <CartIconContainer onClick={toggle}>
       <ShoppingIcon />
-      <ItemCount>{cartCountValue}</ItemCount>
+      <ItemCount>{count}</ItemCount>
     </CartIconContainer>
   );
 };

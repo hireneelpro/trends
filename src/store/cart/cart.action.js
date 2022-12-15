@@ -2,7 +2,7 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 import { TYPES_OF_CART } from "./cart.types";
 
 
-export const setCartItems = (newCartItems) => createAction(TYPES_OF_CART.CART_ITEMS, newCartItems)
+// export const setCartItems = (newCartItems) => createAction(TYPES_OF_CART.CART_ITEMS, newCartItems)
 export const setCartToggle = (bool) => createAction(TYPES_OF_CART.CART_TOGGLE, bool)
 
 //=================
@@ -15,30 +15,35 @@ export const addItemToCart = (addItem, cartItems) => {
         }
     });
     if (x === false) {
-        return [...cartItems, { ...addItem, quantity: 1 }];
+        const newCartItems = [...cartItems, { ...addItem, quantity: 1 }]
+        return createAction(TYPES_OF_CART.CART_ITEMS, newCartItems)
     } else {
-        return [...cartItems];
+        const newCartItems = [...cartItems];
+        return createAction(TYPES_OF_CART.CART_ITEMS, newCartItems)
     }
 };
 
 // ===================
 export const clearItemFromCart = (clearItem, cartItems) => {
     const newCartItems = cartItems.filter((item) => !(item.id === clearItem.id));
-    return [...newCartItems];
+    return createAction(TYPES_OF_CART.CART_ITEMS, newCartItems)
 };
 
 // =============
 export const removeItemFromCart = (removeItem, cartItems) => {
     if (removeItem.quantity < 2) {
-        const newCartItems = clearItemFromCart(removeItem, cartItems);
-        return newCartItems;
+        // clearItemFromCart(removeItem, cartItems)
+
+        const newCartItems = cartItems.filter((item) => !(item.id === removeItem.id));
+        return createAction(TYPES_OF_CART.CART_ITEMS, newCartItems)
     } else {
-        cartItems.forEach((item) => {
+        const newCartItems = cartItems.map((item) => {
             if (item.id === removeItem.id) {
                 removeItem.quantity--;
             }
+            return item
         });
-        return [...cartItems];
+        return createAction(TYPES_OF_CART.CART_ITEMS, newCartItems);
     }
 };
 // ==================

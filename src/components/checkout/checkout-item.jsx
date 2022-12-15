@@ -17,20 +17,21 @@ const CheckOutItem = ({ item }) => {
   // const { addItemToCart, removeItemFromCart, clearItemFromCart } =
   //   useContext(CartContext);
   const cartItems = useSelector(selectCartItems);
+  console.log(cartItems);
   const dispatch = useDispatch();
 
   const addItem = () => {
     const newCartItems = addItemToCart(item, cartItems);
-    dispatch(setCartItems(newCartItems));
+    dispatch(newCartItems);
   };
 
   const removeItem = () => {
     const newCartItems = removeItemFromCart(item, cartItems);
-    dispatch(setCartItems(newCartItems))
+    dispatch(newCartItems)
   };
   const clearItem = () => {
     const newCartItems = clearItemFromCart(item, cartItems);
-    dispatch(setCartItems(newCartItems))
+    dispatch(newCartItems)
   };
 
   return (

@@ -1,5 +1,5 @@
 import { useContext, Fragment } from "react";
-import { CartContext } from "../../context/cart-context";
+// import { CartContext } from "../../context/cart-context";
 import { useSelector } from "react-redux";
 import {
   selectCartTotal,

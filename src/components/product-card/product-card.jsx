@@ -18,7 +18,7 @@ const ProductCard = ({ product }) => {
   
   const addToCart = () => {
     const newCartItems = addItemToCart(product, cartItems)
-    dispatch(setCartItems(newCartItems))
+    dispatch(newCartItems)
   }
   // ============================//
  
