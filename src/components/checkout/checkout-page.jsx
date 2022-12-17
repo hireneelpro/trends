@@ -7,6 +7,7 @@ import CheckOutFooter from "./checkout-footer";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../../store/cart/cart.selector";
+import PaymentForm from "../payment-form/payment-form";
 
 const CheckOut = () => {
   // const { cartItems, setToggleCart } = useContext(CartContext);
@@ -31,6 +32,7 @@ const CheckOut = () => {
       <div className="checkout-footer">
         <CheckOutFooter />
       </div>
+      <PaymentForm/>
     </div>
   );
 };

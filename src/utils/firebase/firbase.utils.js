@@ -1,7 +1,7 @@
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
-  signInWithRedirect,
+  // signInWithRedirect,
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -18,7 +18,7 @@ import {
   collection,
   writeBatch,
   query,
-  getdocs,
+
   getDocs,
 } from "firebase/firestore";
 
