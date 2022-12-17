@@ -1,4 +1,9 @@
-import { BaseButton, GoogleSignInButton, Inverted } from "./button.styles.jsx";
+import {
+  BaseButton,
+  GoogleSignInButton,
+  Inverted,
+  ButtonSpinner,
+} from "./button.styles.jsx";
 // Method 1 as per tutorials//
 // const BUTTON_TYPE_CLASSES = {
 //     google: 'google',
@@ -14,7 +19,7 @@ import { BaseButton, GoogleSignInButton, Inverted } from "./button.styles.jsx";
 // }
 
 // ======method 2 simple i write=========//
-const Button = ({ children, buttonType, ...otherProps }) => {
+const Button = ({ children, buttonType, isLoading, ...otherProps }) => {
   let CustomBtn = BaseButton;
   if (buttonType === "google") {
     CustomBtn = GoogleSignInButton;
@@ -22,6 +27,10 @@ const Button = ({ children, buttonType, ...otherProps }) => {
     CustomBtn = Inverted;
   }
 
-  return <CustomBtn {...otherProps}>{children}</CustomBtn>;
+  return (
+    <CustomBtn {...otherProps}>
+      {isLoading ? <ButtonSpinner /> : { children }}
+    </CustomBtn>
+  );
 };
 export default Button;

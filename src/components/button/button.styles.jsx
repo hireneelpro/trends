@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { SpinnerContainer } from "../spinner/spinner.styles";
 export const BaseButton = styled.button`
   width: auto;
   height: 35px;
@@ -48,5 +48,9 @@ background-color: white;
     }
   
 `
-  
+export const ButtonSpinner = styled(SpinnerContainer)`
+  width:20px;
+  height:20px
+`
+
 
