@@ -15,7 +15,7 @@ const PaymentForm = () => {
             return;
         }
         //  =====Backend payment request ========//
-        const response = await fetch('/.netlify/functions/create-payment-intent.js', {
+        const response = await fetch('/netlify/functions/create-payment-intent.js', {
             method: 'post',
             headers: {
                 'content-Type': 'application/json'
@@ -49,16 +49,16 @@ const PaymentForm = () => {
 
 
 
-return (
-    <PaymentFormContainer>
-        <FormContainer onSubmit={paymentHandler}>
-            <h4>Card Payment:</h4>
-            <CardElement />
-            <Button buttonType='inverted'>Pay Now</Button>
-        </FormContainer>
-    </PaymentFormContainer>
+    return (
+        <PaymentFormContainer>
+            <FormContainer onSubmit={paymentHandler}>
+                <h4>Card Payment:</h4>
+                <CardElement />
+                <Button buttonType='inverted'>Pay Now</Button>
+            </FormContainer>
+        </PaymentFormContainer>
 
-)
+    )
 
 }
 export default PaymentForm
