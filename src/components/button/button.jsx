@@ -19,7 +19,8 @@ import {
 // }
 
 // ======method 2 simple i write=========//
-const Button = ({ children, buttonType, isLoading, ...otherProps }) => {
+const Button = ({ children, buttonType, loading, ...otherProps }) => {
+  // let CustomBtn = {buttonType};
   let CustomBtn = BaseButton;
   if (buttonType === "google") {
     CustomBtn = GoogleSignInButton;
@@ -29,7 +30,7 @@ const Button = ({ children, buttonType, isLoading, ...otherProps }) => {
 
   return (
     <CustomBtn {...otherProps}>
-      {isLoading ? <ButtonSpinner /> : { children }}
+      {loading ? <ButtonSpinner /> : children}
     </CustomBtn>
   );
 };

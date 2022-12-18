@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { GoogleSignInButton } from "../button/button.styles";
+import { GoogleSignInButton,Inverted } from "../button/button.styles";
 
 
 export const CartDropdownContainer = styled.div`
@@ -19,7 +19,7 @@ export const CartDropdownContainer = styled.div`
   ${GoogleSignInButton} {
     background-color: #f5afe9;
     margin-top: auto;
-  }
+   } 
   span {
     font-size: 15px;
     text-transform:upperCase;

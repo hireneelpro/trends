@@ -63,11 +63,12 @@ const PaymentForm = () => {
 
     return (
         <PaymentFormContainer>
-            <FormContainer onSubmit={paymentHandler}>
+            <FormContainer onSubmit={paymentHandler} >
                 <h4>Card Payment:</h4>
                 <CardElement />
-                <Button disabled={isProcessing} onLoading={isProcessing} buttonType='inverted'>
-                    Pay Now </Button>
+                <Button buttonType='google' loading = {isProcessing} >
+                    Pay Now
+                </Button>
             </FormContainer>
         </PaymentFormContainer>
 

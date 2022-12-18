@@ -26,14 +26,16 @@ export const BaseButton = styled.button`
 
 `
 export const GoogleSignInButton = styled(BaseButton)`
-   background-color: #4285f4;
-    color: white;
+  background-color: #4285f4;
+  color: white;
+  display: grid;
+  place-items: center;
 
-    &:hover {
-      background-color: #357ae8;
-      border: none;
-    }
-`  
+  &:hover {
+    background-color: #357ae8;
+    border: none;
+  }
+`;  
 export const Inverted = styled(BaseButton)`
 background-color: white;
     width:fit-content;
@@ -50,7 +52,8 @@ background-color: white;
 `
 export const ButtonSpinner = styled(SpinnerContainer)`
   width:20px;
-  height:20px
+  height:20px;
+ 
 `
 
 
