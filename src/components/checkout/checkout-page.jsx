@@ -8,17 +8,19 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectCartItems } from "../../store/cart/cart.selector";
 import PaymentForm from "../payment-form/payment-form";
+import { setCartToggle } from "../../store/cart/cart.action";
+import { useDispatch } from "react-redux";
 
 const CheckOut = () => {
   // const { cartItems, setToggleCart } = useContext(CartContext);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(setCartToggle(false));
+  }, []);
 
-  // useEffect(() => {
-  //   setToggleCart(false);
-  // }, []);
-
-  const cartItems = useSelector(selectCartItems)
+  const cartItems = useSelector(selectCartItems);
   console.log(cartItems);
-  // 
+  //
 
   return (
     <div className="checkout-page">
@@ -32,7 +34,7 @@ const CheckOut = () => {
       <div className="checkout-footer">
         <CheckOutFooter />
       </div>
-      <PaymentForm/>
+      <PaymentForm />
     </div>
   );
 };

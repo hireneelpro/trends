@@ -2,7 +2,7 @@ import { createAction } from "../../utils/reducer/reducer.utils";
 import { TYPES_OF_CART } from "./cart.types";
 
 
-// export const setCartItems = (newCartItems) => createAction(TYPES_OF_CART.CART_ITEMS, newCartItems)
+export const setCartItems = (newCartItems) => createAction(TYPES_OF_CART.CART_ITEMS, newCartItems)
 export const setCartToggle = (bool) => createAction(TYPES_OF_CART.CART_TOGGLE, bool)
 
 //=================
