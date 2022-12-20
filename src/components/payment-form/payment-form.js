@@ -59,6 +59,7 @@ const PaymentForm = () => {
             }
         }
         setIsProcessing(false)
+        elements.getElement(CardElement).clear()
     }
 
 
