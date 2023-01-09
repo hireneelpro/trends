@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 // import { signOutUser } from "../../../utils/firebase/firbase.utils";
 import CartIcon from "../../cart-icon/cart-icon";
 import CartDropDown from "../../cart-dropdown/cart-dropdown";
-import { CartContext } from "../../../context/cart-context";
+// import { CartContext } from "../../../context/cart-context";
 import {
   NavigationContainer,
   LogoContainer,
@@ -21,7 +21,7 @@ import { selectCartToggle } from "../../../store/cart/cart.selector";
 
 const Navigation = () => {
   const currentUser = useSelector(selectUser);
-  const toggleCart = useSelector(selectCartToggle)
+  const toggleCart = useSelector(selectCartToggle);
 
   // const { currentUser } = useContext(UserContext);S
   // console.log(currentUser);
