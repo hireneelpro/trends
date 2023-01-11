@@ -55,8 +55,8 @@ export const addCollectionAndDocuments = async (
 
 // ========== end of storing data in firestore ===========//
 // ========== fetching data from firebase ===============//
-export const getCategoriesAndDocuments = async () => {
-  const collectionRef = collection(db, "categories");
+export const getCategoriesAndDocuments = async (collection) => {
+  const collectionRef = collection(db, collection);
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q);
   // console.log(querySnapshot);
