@@ -1,8 +1,14 @@
-import CategoryItem from "../category-item/category-item.jsx";
+import CategoryItem from "../category-item/category-item";
 import "../category-item/category-item.scss";
 import { Outlet } from "react-router-dom";
+export type Category = {
+  id: number,
+  title: string,
+  imageUrl:string
+}
+
 const Categories = () => {
-  const categories = [
+  const categories:Category[] = [
     {
       id: 1,
       title: "hats",

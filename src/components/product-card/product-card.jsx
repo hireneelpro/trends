@@ -8,20 +8,18 @@ import { useDispatch } from "react-redux";
 
 // const { addItemToCart } = useContext(CartContext);
 
-
 const ProductCard = ({ product }) => {
+  const { name, price, imageUrl } = product;
 
-  const { name, price, imageUrl, } = product;
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
 
-  const dispatch = useDispatch()
-  const cartItems = useSelector(selectCartItems)
-  
   const addToCart = () => {
-    const newCartItems = addItemToCart(product, cartItems)
-    dispatch(newCartItems)
-  }
+    const newCartItems = addItemToCart(product, cartItems);
+    dispatch(setCartItems(newCartItems));
+  };
   // ============================//
- 
+
   return (
     <div className="product-card-container">
       <img src={imageUrl} alt={`${name}`} />

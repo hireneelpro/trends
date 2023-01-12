@@ -22,16 +22,16 @@ const CheckOutItem = ({ item }) => {
 
   const addItem = () => {
     const newCartItems = addItemToCart(item, cartItems);
-    dispatch(newCartItems);
+    dispatch(setCartItems(newCartItems));
   };
 
   const removeItem = () => {
     const newCartItems = removeItemFromCart(item, cartItems);
-    dispatch(newCartItems)
+    dispatch(setCartItems(newCartItems));
   };
   const clearItem = () => {
     const newCartItems = clearItemFromCart(item, cartItems);
-    dispatch(newCartItems)
+    dispatch(setCartItems(newCartItems));
   };
 
   return (

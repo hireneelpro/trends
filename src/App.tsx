@@ -3,7 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import MainSignPage from "./components/authentication/mainsignpage/main-sign-page";
 import Categories from "./components/categories/categories";
 import Navigation from "./components/routes/navigation/navigation.component";
-import Shop from "../src/components/routes/shop/shop.jsx";
+import Shop from "./components/routes/shop/shop.jsx";
 import CheckOut from "./components/checkout/checkout-page";
 import {
   onAuthStateChangedListener,
@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCategoriesAsync } from "./store/categories/categories.action";
 import Spinner from "./components/spinner/spinner";
 import { categoriesIsLoading } from "./store/categories/categories.selector";
+import { User } from "firebase/auth";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const App = () => {
 
   //  =========================//
   useEffect(() => {
-    const unSubscribe = onAuthStateChangedListener((user) => {
+    const unSubscribe = onAuthStateChangedListener((user:User) => {
       // console.log(user);
       dispatch(setCurrentUser(user));
     });
