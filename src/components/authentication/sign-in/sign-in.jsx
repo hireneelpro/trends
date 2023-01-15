@@ -17,6 +17,7 @@ const SignInForm = () => {
   const logGoogleUser = async (e) => {
     e.preventDefault();
     const data = await signInWithGoogle();
+    console.log(data);
     createUserDocumentFromAuth(data.user);
     // setCurrentUser(data.user);
   };
