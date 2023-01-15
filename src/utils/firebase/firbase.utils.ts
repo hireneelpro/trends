@@ -1,3 +1,4 @@
+import { Category } from "./../../store/categories/categories.types";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -7,6 +8,8 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   onAuthStateChanged,
+  User,
+  NextOrObserver,
   signOut,
 } from "firebase/auth";
 
@@ -18,7 +21,7 @@ import {
   collection,
   writeBatch,
   query,
-
+  QueryDocumentSnapshot,
   getDocs,
 } from "firebase/firestore";
 
@@ -38,10 +41,12 @@ const firebaseApp = initializeApp(firebaseConfig);
 
 export const db = getFirestore(); // accessing stored data in firestore
 // ========== storing data into firestore ==================//
-
-export const addCollectionAndDocuments = async (
-  collectionKey,
-  objectsToAdd
+export type ObjectsToAdd = {
+  title: string;
+};
+export const addCollectionAndDocuments = async <T extends ObjectsToAdd>(
+  collectionKey: string,
+  objectsToAdd: T[]
 ) => {
   const collectionRef = collection(db, collectionKey);
   const batch = writeBatch(db);
@@ -55,12 +60,14 @@ export const addCollectionAndDocuments = async (
 
 // ========== end of storing data in firestore ===========//
 // ========== fetching data from firebase ===============//
-export const getCategoriesAndDocuments = async (collection) => {
-  const collectionRef = collection(db, collection);
+export const getCategoriesAndDocuments = async (
+  collectionKey: string
+): Promise<Category[]> => {
+  const collectionRef = collection(db, collectionKey);
   const q = query(collectionRef);
   const querySnapshot = await getDocs(q);
   // console.log(querySnapshot);
-  return querySnapshot.docs.map((each)=>(each.data()))
+  return querySnapshot.docs.map((each) => each.data() as Category);
   //   .reduce((acc, each) => {
   //     const { title, items } = each.data();
   //     console.log(title,items);
@@ -85,13 +92,13 @@ provider.setCustomParameters({
 });
 
 // ===========sign-up with email and password method ==================//
-export const signupWithEmail = async (email, password) => {
+export const signupWithEmail = async (email: string, password: string) => {
   if (!email || !password) return;
 
   return await createUserWithEmailAndPassword(auth, email, password);
 };
 // ============ sign-in with email and password===============//
-export const signInWithEmail = async (email, password) => {
+export const signInWithEmail = async (email: string, password: string) => {
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password);
 };
@@ -100,13 +107,23 @@ export const signOutUser = () => signOut(auth);
 
 //=========== onAuthStateChanged===================//
 
-export const onAuthStateChangedListener = (callback) =>
+export const onAuthStateChangedListener = (callback:NextOrObserver<User>) =>
   onAuthStateChanged(auth, callback);
 //  onAuthStateChanged method takes two argument one auth and other is callback function which we can define.. so when function runs it keep listening auth object and when state of auth change it runs callback function .. so when signin this function will run,, if signout this function will run.
 
 // ========== firestore  storing user data complete=================//
-
-export const createUserDocumentFromAuth = async (userAuth, extrainfo = {}) => {
+export type ExtraInfo = {
+  displayName?: string;
+};
+export type UserData = {
+  createdAt: Date,
+  displayName: string,
+  email:string,
+}
+export const createUserDocumentFromAuth = async (
+  userAuth: User,
+  extrainfo = {} as ExtraInfo
+) => {
   const userDocRef = doc(db, "users", userAuth.uid);
 
   // Fetching the document
@@ -116,13 +133,13 @@ export const createUserDocumentFromAuth = async (userAuth, extrainfo = {}) => {
     const createAt = new Date();
     try {
       await setDoc(userDocRef, {
-        displayName,
+        displayName  ,
         email,
         createAt,
         ...extrainfo,
       });
     } catch (error) {
-      console.log("error creating the user", error.message);
+      console.log("error creating the user", error);
     }
   }
   return userDocRef;
