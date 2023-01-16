@@ -11,11 +11,12 @@ import CartIcon from "../../cart-icon/cart-icon";
 import CartDropDown from "../../cart-dropdown/cart-dropdown";
 import { CartContext } from "../../../context/cart-context";
 import {
+  NavigationDiv,
   NavigationContainer,
   LogoContainer,
   NavLinksContainer,
-  NavLink,
-} from "./navigation.styles";
+  NavLink,TrendsTitle
+} from "./navigation.styles.jsx";
 import { selectUser } from "../../../store/user/user.selector";
 import { selectCartToggle } from "../../../store/cart/cart.selector";
 
@@ -34,21 +35,23 @@ const Navigation = () => {
   // };
   // ====
   return (
-    <Fragment>
+    <NavigationDiv>
       <NavigationContainer>
         <LogoContainer to="/">
           <div>
             <CrwnLogo />
           </div>
         </LogoContainer>
+        <TrendsTitle>Trends</TrendsTitle>
         <NavLinksContainer>
-          <NavLink to="/shop">shop</NavLink>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/shop">Shop</NavLink>
           {currentUser ? (
             <NavLink as="span" onClick={signOutUser}>
               Sign Out
             </NavLink>
           ) : (
-            <NavLink to="/mainsignpage">sign-in</NavLink>
+            <NavLink to="/mainsignpage">Sign In</NavLink>
           )}
           <CartIcon />
         </NavLinksContainer>
@@ -60,7 +63,7 @@ const Navigation = () => {
       </NavigationContainer>
 
       <Outlet />
-    </Fragment>
+    </NavigationDiv>
   );
 };
 

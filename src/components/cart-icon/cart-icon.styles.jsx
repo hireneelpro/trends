@@ -9,13 +9,14 @@ export const CartIconContainer = styled.div`
   justify-content: center;
   cursor: pointer;
   svg {
-    width: 24px;
-    height: 24px;
+    width: 30px;
+    height: 30px;
   }
 `;
 export const ItemCount = styled.span`
   position: absolute;
   font-size: 10px;
+  color:black;
   font-weight: bold;
   bottom: 12px;
 `;

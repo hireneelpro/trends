@@ -1,33 +1,48 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+export const NavigationDiv = styled.div`
+`;
+
 export const NavigationContainer = styled.div`
-  height: 70px;
-  width: 100%;
+  /* height: 70px; */
+  /* width: 100%; */
   display: flex;
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 25px;
-  background-color: rgb(211, 76, 211);
+  
+  background-color: white;
   position: sticky;
   top: 0;
   z-index: 5;
 `;
 
 export const LogoContainer = styled(Link)`
-  height: 100%;
-  width: 70px;
-  padding: 25px;
+  padding: 15px 25px;
 `;
 
+export const TrendsTitle = styled.h1``;
+
 export const NavLinksContainer = styled.div`
-  width: 50%;
-  height: 100%;
+  /* width: 50%; */
+  /* height: 100%; */
   color: white;
   display: flex;
   align-items: center;
   justify-content: flex-end;
 `;
 export const NavLink = styled(Link)`
-  padding: 10px 15px;
+  ::first-letter {
+    color: red;
+  }
   cursor: pointer;
-  color: white;
+  padding: 5px 10px;
+  color: black;
+  font-weight: 800;
+  &:hover {
+    transition: all 0.5s linear;
+  }
+  @media screen and (min-width: 768px) {
+    padding: 10px 25px;
+  }
 `;

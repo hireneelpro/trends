@@ -13,15 +13,18 @@ const CatetoryShop = () => {
   // console.log(category);
 
   return (
-    <div className="products-container">
-      {categories[category] ? (
-        categories[category].map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))
-      ) : (
-        <h1> No items to show</h1>
-      )}
-    </div>
+    <>
+      <h2 className="category-title">{category}</h2>
+      <div className="products-container">
+        {categories[category] ? (
+          categories[category].map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))
+        ) : (
+          <h1> No items to show</h1>
+        )}
+      </div>
+    </>
   );
 };
 

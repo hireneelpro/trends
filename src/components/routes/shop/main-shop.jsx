@@ -19,7 +19,7 @@ const MainShop = () => {
         categories &&
         Object.keys(categories).map((title) => (
           <Fragment key={title}>
-            <h2>
+            <h2 className="category-title">
               <Link to={title}>
                 <span>{title}</span>
               </Link>

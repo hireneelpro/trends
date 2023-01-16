@@ -24,11 +24,15 @@
   &:hover {
     img {
       opacity: 0.8;
+      cursor: pointer;
     }
 
     button {
+      border: transparent;
       opacity: 0.85;
       display: flex;
+      // text-align: center;
+    width: fit-content;
     }
   }
 
@@ -40,12 +44,11 @@
     font-size: 14px;
 
     .name {
-      width: 90%;
       margin-bottom: 15px;
     }
 
     .price {
-      width: 10%;
+      color:grey;
     }
   }
 }

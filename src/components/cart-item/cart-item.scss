@@ -1,16 +1,17 @@
 .item {
   height: 3rem;
+  width: 100%;
+  padding: 0 0.5rem;
   margin-bottom: 1rem;
-  display: grid;
-  grid-template-columns: auto 1fr;
-  gap: 1rem;
-
+  display: flex;
+ justify-content: space-between;
   & img {
     width: 3rem;
     height: 3rem;
     object-fit: cover;
   }
   & div {
+    min-width: 60%;
     & h6,
     span {
       font-size: 0.8rem;

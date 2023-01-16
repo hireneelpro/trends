@@ -1,13 +1,13 @@
 .checkout-page {
   width: 100%;
   max-height: 80vh;
-  overflow-y: scroll;
-  background-color: rgba(128, 128, 128, 0.123);
+  overflow-y: auto;
+  box-shadow:0px 0px 5px 5px rgba(19, 2, 2, 0.123);
 }
 .checkout-footer {
   position: sticky;
   bottom: 0;
-  background-color: rgb(223, 145, 223);
+  background-color: rgb(189, 189, 189);
  & h5 {
     text-align: center;
  }
