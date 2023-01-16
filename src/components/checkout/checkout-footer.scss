@@ -1,0 +1,9 @@
+.checkout-footer {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  background-color: rgb(189, 189, 189);
+  & h4 {
+    text-align: center;
+  }
+}

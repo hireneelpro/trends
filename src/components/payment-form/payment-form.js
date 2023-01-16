@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { selectCartTotal } from "../../store/cart/cart.selector"
 import { selectUser } from "../../store/user/user.selector"
 import Button from "../button/button";
-import { PaymentFormContainer, FormContainer } from "./payment-form.styles";
+import { PaymentFormContainer, FormContainer,CardContainer } from "./payment-form.styles";
 import { setCartItems } from "../../store/cart/cart.action";
 import { useDispatch } from "react-redux";
 const PaymentForm = () => {
@@ -69,8 +69,12 @@ const PaymentForm = () => {
         <PaymentFormContainer>
             <FormContainer onSubmit={paymentHandler} >
                 <h4>Card Payment:</h4>
+                <CardContainer>
+
                 <CardElement />
-                <Button buttonType='google' loading = {isProcessing} >
+                </CardContainer>
+                
+                <Button buttonType='google' loading={isProcessing} >
                     Pay Now
                 </Button>
             </FormContainer>

@@ -1,15 +1,14 @@
-.checkout-headings{
-   
-    background-color: rgb(223, 145, 223);
-    color: white;
-    font-size: 0.8rem;
-    font-weight: 700;
-    width: 100%;
-    position: sticky;
-    top: 0;
+.checkout-headings {
+  background-color: #c4bebe;
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  padding: 0.5rem 0;
 
-    display: grid;
-    grid-template-columns: repeat(5,1fr);
-    place-items: center;
-    
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  place-items: center;
 }

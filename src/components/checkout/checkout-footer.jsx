@@ -1,6 +1,7 @@
 import { useContext, Fragment } from "react";
 // import { CartContext } from "../../context/cart-context";
 import { useSelector } from "react-redux";
+import "./checkout-footer.scss"
 import {
   selectCartTotal,
   selectCartCount,
@@ -11,12 +12,13 @@ const CheckOutFooter = () => {
   const cartCount = useSelector(selectCartCount)
   const cartTotal = useSelector(selectCartTotal)
   return (
-    <Fragment>
+    <footer className="checkout-footer">
+       <h4>Thank you for purchase</h4> 
       <h4>
-        Total Items {cartCount} Total Price ${cartTotal}
+        Total Items {cartCount} Total Price ${cartTotal}  
       </h4>
-      <h5>Thank you for purchase</h5>
-    </Fragment>
+   
+    </footer>
   );
 };
 export default CheckOutFooter;
