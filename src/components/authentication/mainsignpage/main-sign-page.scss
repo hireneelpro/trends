@@ -1,11 +1,13 @@
 .main-signin-page{
-    max-width:1000px;
+    max-width:400px;
     margin: 0 auto;
-    padding: 1rem 4rem;
-    box-shadow: 0 0 5px rgb(102, 72, 72);
+    color: grey;
+    // padding: 1rem 4rem;
+    // box-shadow: 0 0 5px rgb(102, 72, 72);
 }
 @media screen and (min-width:768px) {
  .main-signin-page{
+    max-width: 850px;
     display: grid;
     grid-template-columns: repeat(2,1fr);
     gap: 2rem;

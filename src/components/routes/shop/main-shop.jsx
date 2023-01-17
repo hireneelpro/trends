@@ -12,7 +12,7 @@ const MainShop = () => {
   const categories = useSelector(selectCategories);
   const isLoading = useSelector(categoriesIsLoading);
   return (
-    <Fragment>
+    <div className="main-shop-page">
       {isLoading ? (
         <Spinner />
       ) : (
@@ -32,7 +32,7 @@ const MainShop = () => {
           </Fragment>
         ))
       )}
-    </Fragment>
+    </div>
   );
 };
 

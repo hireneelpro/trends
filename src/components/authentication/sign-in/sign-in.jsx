@@ -5,8 +5,8 @@ import {
   signInWithEmail,
   signInWithGoogle,
 } from "../../../utils/firebase/firbase.utils";
-import Button from "../../button/button";
-import { SignInStyles,ButtonContainer } from "./sign-in.styles";
+// import Button from "../../button/button";
+import "./sign-in.styles.scss"
 
 const SignInForm = () => {
   // ========context========
@@ -29,7 +29,7 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const handler = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     const newName = event.target.name;
     const value = event.target.value;
     console.log(newName, value);
@@ -42,29 +42,32 @@ const SignInForm = () => {
 
     try {
       const response = await signInWithEmail(email, password);
-      // console.log(response);
+      console.log(response);
       // setCurrentUser(response.user);
     } catch (error) {
-      console.log(error);
-      if (error.code === "auth/user-not-found") {
-        alert("user not found");
-      } else if (error.code === "auth/wrong-password") {
-        alert("wrong password");
-      } else if (error.code === "auth/invalid-email") {
-        alert(" invalid email");
-      } else {
-        alert("sign-in error / pls try again");
-      }
+      alert(error)
+      // or alert(error.code)
+      // or====a below to be more specific.
+      // if (error.code === "auth/user-not-found") {
+      //   alert("user not found");
+      // } else if (error.code === "auth/wrong-password") {
+      //   alert("wrong password");
+      // } else if (error.code === "auth/invalid-email") {
+      //   alert(" invalid email");
+      // } else {
+      //   alert("sign-in error / pls try again");
+      // }
     }
     setFormFields(defaultFormFields);
   };
 
   // ===========
   return (
-    <SignInStyles>
-      <h4>Having email and password</h4>
-      <h5> Sign In Here</h5>
+    <form className="signin-page" onSubmit={emailSignin}>
+      
+      <h4> Sign In Here</h4>
       <label>email</label>
+      <br />
       <input
         type="email"
         required
@@ -73,6 +76,7 @@ const SignInForm = () => {
         onChange={handler}
       />
       <label>password</label>
+      <br />
       <input
         type="password"
         required
@@ -80,13 +84,19 @@ const SignInForm = () => {
         value={password}
         onChange={handler}
       />
-      <ButtonContainer>
-        <Button onClick={emailSignin}>sign-in</Button>
-        <Button buttonType="google" onClick={logGoogleUser}>
-          google
-        </Button>
-      </ButtonContainer>
-    </SignInStyles>
+      <div className="btn-container">
+        <button className="sign-in-btn btn" type="submit">
+          Log in Trends
+        </button>
+        <span className="or">
+          --------------------------------- OR --------------------------------
+        </span>
+        <button className="google-btn btn" onClick={logGoogleUser}>
+          <i className="fab fa-google"></i>
+          Log in with Google
+        </button>
+      </div>
+    </form>
   );
 };
 export default SignInForm;

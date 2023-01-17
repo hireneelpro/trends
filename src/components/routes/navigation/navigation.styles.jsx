@@ -1,20 +1,25 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 export const NavigationDiv = styled.div`
+  width: 100%;
 `;
 
 export const NavigationContainer = styled.div`
-  /* height: 70px; */
-  /* width: 100%; */
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 25px;
-  
+  z-index: 5;
   background-color: white;
+padding:0 1rem;
   position: sticky;
   top: 0;
-  z-index: 5;
+  @media screen and (min-width:768px){
+    padding:0 2rem
+  }
+  @media screen and (min-width:1170px){
+    padding:0 4rem
+  }
 `;
 
 export const LogoContainer = styled(Link)`

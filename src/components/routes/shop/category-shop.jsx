@@ -13,7 +13,7 @@ const CatetoryShop = () => {
   // console.log(category);
 
   return (
-    <>
+    <div className="category-shop-page">
       <h2 className="category-title">{category}</h2>
       <div className="products-container">
         {categories[category] ? (
@@ -24,7 +24,7 @@ const CatetoryShop = () => {
           <h1> No items to show</h1>
         )}
       </div>
-    </>
+    </div>
   );
 };
 

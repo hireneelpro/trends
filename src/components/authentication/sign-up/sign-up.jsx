@@ -58,13 +58,13 @@ const SignUpForm = () => {
   return (
     
       <form className="sign-up-form" onSubmit={submitHandler}>
-        <h4>sign up with your email and password</h4>
+        <h4>sign up with email and password</h4>
         <label>Display Name </label>
         <input
           type="text"
           required
           name="displayName"
-          value={displayName}
+          // value={displayName}
           onChange={handler}
         />
 
@@ -92,9 +92,9 @@ const SignUpForm = () => {
           value={confirmPassword}
           onChange={handler}
         />
-      <Button buttonType='inverted' type='submit' >
-        SignUp
-        </Button>
+      <button className="btn sign-up-btn" type='submit' >
+        Sign Up Here
+        </button>
       </form>
     
   );
