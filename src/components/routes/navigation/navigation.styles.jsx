@@ -44,6 +44,7 @@ export const NavLink = styled(Link)`
   padding: 5px 10px;
   color: black;
   font-weight: 800;
+  font-size:1.1rem;
   &:hover {
     transition: all 0.5s linear;
   }

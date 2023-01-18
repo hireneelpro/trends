@@ -37,7 +37,7 @@ const CheckOutItem = ({ item }) => {
   return (
     <div className="checkout-item">
       <img src={imageUrl} alt={name} />
-      <h5>{name}</h5>
+      <h4>{name}</h4>
       <div className="dec-no-inc">
         <i onClick={removeItem} className="fas fa-chevron-left decrease"></i>
         <span className="quantity">{quantity}</span>
