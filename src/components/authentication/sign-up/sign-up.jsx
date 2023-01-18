@@ -6,7 +6,7 @@ import {
 } from "../../../utils/firebase/firbase.utils";
 // import { UserContext } from "../../../context/user.context";
 import Button from "../../button/button";
-
+import InputForm from "../form-input";
 const SignUpForm = () => {
   const defaultFormFields = {
     displayName: "",
@@ -42,7 +42,7 @@ const SignUpForm = () => {
     }
     try {
       const response = await signupWithEmail(email, password);
-      // console.log(response);
+      console.log(response);
       await createUserDocumentFromAuth(response.user, { displayName });
       setFormFields(defaultFormFields);
       // setCurrentUser(response.user)
@@ -56,47 +56,45 @@ const SignUpForm = () => {
 
   // ======== return block============//
   return (
-    
-      <form className="sign-up-form" onSubmit={submitHandler}>
-        <h4>sign up with email and password</h4>
-        <label>Display Name </label>
-        <input
-          type="text"
-          required
-          name="displayName"
-          // value={displayName}
-          onChange={handler}
-        />
+    <form className="sign-up-form" onSubmit={submitHandler}>
+      <h4>sign up with email and password</h4>
+      <InputForm
+        label="Display Name"
+        type="text"
+        required
+        name="displayName"
+        value={displayName}
+        onChange={handler}
+      />
 
-        <label>email </label>
-        <input
-          type="email"
-          required
-          name="email"
-          value={email}
-          onChange={handler}
-        />
-        <label>password</label>
-        <input
-          type="password"
-          required
-          name="password"
-          value={password}
-          onChange={handler}
-        />
-        <label>confirm password </label>
-        <input
-          type="password"
-          required
-          name="confirmPassword"
-          value={confirmPassword}
-          onChange={handler}
-        />
-      <button className="btn sign-up-btn" type='submit' >
+      <InputForm
+        label="Email"
+        type="email"
+        required
+        name="email"
+        value={email}
+        onChange={handler}
+      />
+      <InputForm
+        label="Password"
+        type="password"
+        required
+        name="password"
+        value={password}
+        onChange={handler}
+      />
+      <InputForm
+        label="Confirm Password"
+        type="password"
+        required
+        name="confirmPassword"
+        value={confirmPassword}
+        onChange={handler}
+      />
+      <button className="btn sign-up-btn" type="submit">
         Sign Up Here
-        </button>
-      </form>
-    
+      </button>
+    </form>
   );
 };
 

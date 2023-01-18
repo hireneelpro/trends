@@ -1,17 +1,17 @@
 .signin-page {
   margin: 0 auto;
-  // border: solid;
+  border:  1px solid;
   text-transform: capitalize;
   padding: 1rem;
 }
 .btn-container {
-  padding-top: 1rem;
+  // padding-top: 1rem;
 }
 .btn {
   display: inline-block;
   width: 100%;
   padding: 0.5rem 1rem;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border: 1px solid rgb(204, 199, 199);
   // border-radius: 5px;
   background-color: transparent;
@@ -39,24 +39,11 @@ justify-items: left;
 .or{
   width: 100%;
   display: block;
-  padding: 2.5rem 0;
+  padding: 1rem 0;
   margin: 0 auto;
 }
 
-input {
-  width: 100%;
-  padding: 0.5rem;
-  font-size: 1.1rem;
-  border: 1px solid rgb(204, 199, 199);
-  border-radius: 5px;
-  &:focus {
-    outline: none;
-  }
-}
-label {
-  padding-left: 0.5rem;
-  font-size: 0.7rem;
-}
+
 h3,
 h4 {
   text-align: center;

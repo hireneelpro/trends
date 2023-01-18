@@ -1,0 +1,61 @@
+
+$sub-color: grey;
+$main-color: black;
+
+@mixin shrinkLabel {
+  top: -18px;
+  font-size: 10px;
+  color: $main-color;
+}
+
+.group {
+  position: relative;
+  margin:2rem 0;
+//   padding: 0;
+//   margin: 45px 0;
+
+  .form-input {
+    background: none;
+    background-color: white;
+    color: $sub-color;
+    font-size: 14px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: 1px solid rgb(224, 218, 218);
+    border-radius: 0;
+    // border-bottom: 1px solid $sub-color;
+    // margin: 25px 0;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus ~ .form-input-label {
+      @include shrinkLabel();
+    //   /   we can add manually css properties instead on above scss fancy code//
+    //here shrinklable properties will be added when focused on input
+    //  but when we finished typing and focused on anothr input field ... label will be again move to its original place which will create imposed image on entered user value to prevent this when value.length is greater than 0 we apply .shrink class  when any data is there and same properties is used to shrink class.//
+    }
+  }
+
+  input[type='password'] {
+    letter-spacing: 0.3em;
+  }
+
+  .form-input-label {
+    color: $sub-color;
+    font-size: 13px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 300ms ease all;
+
+    &.shrink {
+      @include shrinkLabel();
+    //   we can add manually css properties instead on above scss fancy code//
+    }
+  }
+}

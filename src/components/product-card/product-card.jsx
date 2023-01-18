@@ -29,7 +29,7 @@ const ProductCard = ({ product }) => {
         <span className="name">{name}</span>
         <span className="price">$ {price}</span>
       </div>
-      <button onClick={addToCart} className="btn">
+      <button  onClick={addToCart} className="btn add-to-cart-btn">
         Add to Cart
       </button>
     </div>

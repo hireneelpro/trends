@@ -1,12 +1,12 @@
 .sign-up-form {
-  
+  border: 1px solid;
   margin: 0 auto;
   padding: 1rem;
   text-transform: capitalize;
   .sign-up-btn{
-  margin: 2rem 0;
+  // margin: 2rem 0;
   color: grey;
-  border:  2px solid black;
+  border:  1px solid black;
  &:hover{
   color: white;
   background-color: black;

@@ -6,7 +6,8 @@ import {
   signInWithGoogle,
 } from "../../../utils/firebase/firbase.utils";
 // import Button from "../../button/button";
-import "./sign-in.styles.scss"
+import "./sign-in.styles.scss";
+import InputForm from "../form-input";
 
 const SignInForm = () => {
   // ========context========
@@ -29,23 +30,23 @@ const SignInForm = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const handler = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     const newName = event.target.name;
     const value = event.target.value;
     console.log(newName, value);
     setFormFields({ ...formFields, [newName]: value });
   };
-  // console.log(formFields);
+  console.log(formFields);
   // email signin//
-  const emailSignin = async (e) => {
-    e.preventDefault();
+  const emailSignin = async (event) => {
+    event.preventDefault();
 
     try {
       const response = await signInWithEmail(email, password);
       console.log(response);
       // setCurrentUser(response.user);
     } catch (error) {
-      alert(error)
+      alert(error);
       // or alert(error.code)
       // or====a below to be more specific.
       // if (error.code === "auth/user-not-found") {
@@ -64,20 +65,18 @@ const SignInForm = () => {
   // ===========
   return (
     <form className="signin-page" onSubmit={emailSignin}>
-      
       <h4> Sign In Here</h4>
-      <label>email</label>
       <br />
-      <input
+      <InputForm
+        label="email"
         type="email"
         required
         name="email"
         value={email}
         onChange={handler}
       />
-      <label>password</label>
-      <br />
-      <input
+      <InputForm
+        label="password"
         type="password"
         required
         name="password"
